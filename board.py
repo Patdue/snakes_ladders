@@ -37,7 +37,7 @@ class Board():
 
         board = Board()
         x, y = size
-        n_normal_fields = x * y - 1 - sum(n_shortcuts.values())
+        n_normal_fields = x * y - sum(n_shortcuts.values())
 
         for _ in range(n_normal_fields):
             board.fields.append(Field())
@@ -45,7 +45,7 @@ class Board():
         for shortcut in n_shortcuts:
             for _ in range(n_shortcuts[shortcut]):
                 snake = shortcut(target=random.choice(board.fields))
-                board.fields.insert(random.randint(0, len(board.fields) - 2), snake)
+                board.fields.insert(random.randint(0, len(board.fields) - 1), snake)
         return board
 
     def is_last_field_empty(self) -> bool:
